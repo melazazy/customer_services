@@ -1,4 +1,4 @@
-<nav x-data="{ isScrolled: false, isOpen: false }" 
+<nav x-data="{ isScrolled: false, isOpen: false }"
     @scroll.window="isScrolled = (window.pageYOffset > 20)"
     :class="{ 'bg-gray-800 shadow-lg': isScrolled, 'bg-transparent': !isScrolled }"
     class="fixed w-full z-50 transition-all duration-300">
@@ -14,7 +14,7 @@
                 <a href="#services" class="text-white hover:text-primary-red transition-colors">Services</a>
                 <a href="#about" class="text-white hover:text-primary-red transition-colors">About</a>
                 <a href="#contact" class="text-white hover:text-primary-red transition-colors">Contact</a>
-                
+
                 <!-- Auth Links -->
                 <div class="flex items-center space-x-4">
                     <a href="/login" class="text-white hover:text-primary-red transition-colors">Login</a>
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Mobile Navigation Button -->
-            <button @click="isOpen = !isOpen" 
+            <button @click="isOpen = !isOpen"
                     class="md:hidden focus:outline-none text-white"
                     aria-label="Toggle navigation">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div x-show="isOpen" 
+        <div x-show="isOpen"
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 transform -translate-y-2"
              x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -47,7 +47,7 @@
                 <a href="#services" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Services</a>
                 <a href="#about" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">About</a>
                 <a href="#contact" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Contact</a>
-                
+
                 <!-- Mobile Auth Links -->
                 <div class="pt-4 border-t border-gray-700 space-y-2">
                     <a href="/login" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Login</a>

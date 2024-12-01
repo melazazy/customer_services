@@ -64,15 +64,25 @@
     </section>
 
     <!-- Stats Section -->
-    <section id="stats" class="py-20 bg-primary-dark text-white">
+    <section id="stats" class="py-20">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                @foreach($stats as $stat)
-                <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
-                    <div class="text-4xl font-bold text-primary-red mb-2">{{ $stat['value'] }}</div>
-                    <div class="text-lg">{{ $stat['label'] }}</div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-text">Clients Served</div>
                 </div>
-                @endforeach
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Team Members</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
             </div>
         </div>
     </section>
