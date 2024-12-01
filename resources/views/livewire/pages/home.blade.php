@@ -43,7 +43,7 @@
                 @foreach($services as $service)
                     <div class="service-card group" data-aos="fade-up" data-aos-delay="{{ $service['delay'] }}">
                         <div class="relative overflow-hidden rounded-t-xl">
-                            <img src="{{ $service['image'] }}"
+                            <img src="{{ asset('storage/services/images/' . $service['image']) }}"
                                  alt="{{ $service['title'] }}"
                                  class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
                             <div class="service-icon">

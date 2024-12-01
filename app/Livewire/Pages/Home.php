@@ -24,7 +24,6 @@ class Home extends Component
 
     public function render()
     {
-        // dd($this->getServices());
         return view('livewire.pages.home', [
             'services' => $this->getServices(),
             'stats' => $this->getStats(),

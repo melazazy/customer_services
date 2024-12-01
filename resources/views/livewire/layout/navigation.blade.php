@@ -17,8 +17,18 @@
 
                 <!-- Auth Links -->
                 <div class="flex items-center space-x-4">
-                    <a href="/login" class="text-white hover:text-primary-red transition-colors">Login</a>
-                    <a href="/register" class="bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors">Register</a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="text-white hover:text-primary-red transition-colors">Dashboard</a>
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <button type="submit" class="text-white hover:text-primary-red transition-colors">
+                                Logout
+                            </button>
+                        </form>
+                    @else
+                        <a href="/login" class="text-white hover:text-primary-red transition-colors">Login</a>
+                        <a href="/register" class="bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors">Register</a>
+                    @endauth
                 </div>
             </div>
 
@@ -50,8 +60,18 @@
 
                 <!-- Mobile Auth Links -->
                 <div class="pt-4 border-t border-gray-700 space-y-2">
-                    <a href="/login" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Login</a>
-                    <a href="/register" class="block bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors text-center mx-3">Register</a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Dashboard</a>
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <button type="submit" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">
+                                Logout
+                            </button>
+                        </form>
+                    @else
+                        <a href="/login" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Login</a>
+                        <a href="/register" class="block bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors text-center mx-3">Register</a>
+                    @endauth
                 </div>
             </div>
         </div>
