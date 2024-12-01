@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles */
+@layer base {
+    :root {
+        --primary-dark: #1f2937;
+        --primary-red: #fb503b;
+        --secondary-red: #ff6b5b;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply font-sans text-gray-800;
+    }
+}
+
+@layer components {
+    .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn-primary {
+        @apply bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300;
+    }
+
+    .section-title {
+        @apply text-3xl md:text-4xl font-bold mb-4;
+    }
+
+    /* Services Section */
+    .service-card {
+        @apply transform transition-all duration-500 hover:-translate-y-2;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-icon {
+        @apply absolute top-4 right-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg z-10;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .service-icon i {
+        @apply text-2xl text-primary-red;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
