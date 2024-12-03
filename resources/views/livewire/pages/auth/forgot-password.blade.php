@@ -36,26 +36,40 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+    <div class="container">
+        <p class="text-center">
+            <a href="{{ route('home') }}" class="d-flex align-items-center justify-content-center">
+                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                Back to homepage
+            </a>
+        </p>
+        <div class="row justify-content-center form-bg-image" data-background-lg="{{ asset('assets/img/illustrations/forgot-password.svg') }}" style="background: url({{ asset('assets/img/illustrations/forgot-password.svg') }});">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                    <div class="text-center text-md-center mb-4 mt-md-0">
+                        <h1 class="mb-0 h3">Forgot Password?</h1>
+                        <p class="text-gray">Enter your email to reset your password</p>
+                    </div>
+
+                    <form wire:submit="sendPasswordResetLink" class="mt-4">
+                        <div class="form-group mb-4">
+                            <label for="email">Your Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                                </span>
+                                <input wire:model="email" type="email" class="form-control" placeholder="example@company.com" required>
+                            </div>
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form wire:submit="sendPasswordResetLink">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</div>
+</section>

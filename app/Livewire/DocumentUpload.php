@@ -35,7 +35,7 @@ class DocumentUpload extends Component
         $path = $this->document->store('documents', 'public');
 
         $document = Document::create([
-            'user_id' => auth()->id(),
+            'user_id' => auth()->user->id(),
             'service_id' => $this->service_id,
             'request_id' => $this->request_id,
             'file_path' => $path,

@@ -69,37 +69,50 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
-    <form wire:submit="resetPassword">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+    <div class="container">
+        <p class="text-center">
+            <a href="{{ route('home') }}" class="d-flex align-items-center justify-content-center">
+                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                Back to homepage
+            </a>
+        </p>
+        <div class="row justify-content-center form-bg-image" data-background-lg="{{ asset('assets/img/illustrations/reset-password.svg') }}" style="background: url({{ asset('assets/img/illustrations/reset-password.svg') }});">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                    <div class="text-center text-md-center mb-4 mt-md-0">
+                        <h1 class="mb-0 h3">Reset Password</h1>
+                    </div>
+
+                    <form wire:submit="resetPassword" class="mt-4">
+                        <div class="form-group mb-4">
+                            <label for="password">New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon2">
+                                    <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <input wire:model="password" type="password" class="form-control" placeholder="New Password" required>
+                            </div>
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="password_confirmation">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon3">
+                                    <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <input wire:model="password_confirmation" type="password" class="form-control" placeholder="Confirm Password" required>
+                            </div>
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Reset Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                          type="password"
-                          name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</div>
+    </div>
+</section>
