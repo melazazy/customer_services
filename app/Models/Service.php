@@ -32,23 +32,23 @@ class Service extends Model
     {
         return $this->hasMany(Document::class);
     }
-     // Helper methods
-     public function uploadImage($file)
-     {
-         if ($this->image_url) {
-             $this->deleteFile($this->image_url);
-         }
-         
-         $path = $this->uploadFile($file, 'services/images');
-         $this->update(['image_url' => $path]);
-     }
- 
-     public function deleteImage()
-     {
-         if ($this->deleteFile($this->image_url)) {
-             $this->update(['image_url' => null]);
-             return true;
-         }
-         return false;
-     }
+    // Helper methods
+    public function uploadImage($file)
+    {
+        if ($this->image_url) {
+            $this->deleteFile($this->image_url);
+        }
+
+        $path = $this->uploadFile($file, 'services/images');
+        $this->update(['image_url' => $path]);
+    }
+
+    public function deleteImage()
+    {
+        if ($this->deleteFile($this->image_url)) {
+            $this->update(['image_url' => null]);
+            return true;
+        }
+        return false;
+    }
 }

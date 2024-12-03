@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\ServiceRequestController;
 use App\Livewire\Pages\Home;
 use App\Livewire\Pages\Dashboard;
 use App\Livewire\ServiceManagement;
 use App\Livewire\Profile\Edit;
 use App\Livewire\Profile\Show;
+// use App\Livewire\ServiceRequest; // Add this line
+use App\Http\Livewire\Pages\ServiceRequest;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ManageRequests;
+use App\Livewire\ServiceRequest as LivewireServiceRequest;
+
 
 Route::get('/', Home::class)->name('home');
 
@@ -15,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
         ->middleware(['verified'])
         ->name('dashboard');
 
+    Route::get('/manage-requests', ManageRequests::class)->name('manage.requests');
+    Route::get('/request-service', LivewireServiceRequest::class)->name('request.service');
     // Profile Routes
     Route::get('/profile', Show::class)
         ->name('profile');
@@ -39,6 +47,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/requests', function () {
         return view('requests.index');
     })->name('requests.index');
+    // Service Request Route
+    // Route::get('/service-request', ServiceRequest::class)->name('service.request');
+    // Route::view('/service-request', 'service-request')->name('service.request');
+    // Route::get('/service-request', [ServiceRequestController::class, 'index'])->name('service.request');
+    // Route::post('/service-request/store', [ServiceRequestController::class, 'submit'])->name('service.request.store');
 
     // Document Management Routes
     Route::get('/documents', function () {

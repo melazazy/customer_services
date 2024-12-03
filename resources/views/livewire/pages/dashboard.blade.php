@@ -38,10 +38,7 @@
             <div class="user-content">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Overview</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {{-- <div class="bg-white p-4 rounded-lg shadow-md">
-                        <h3 class="text-lg font-medium text-gray-700">Your Services</h3>
-                        <p class="text-2xl font-bold text-gray-900">{{ $userStats['your_services'] }}</p>
-                    </div> --}}
+
                     <div class="bg-white p-4 rounded-lg shadow-md">
                         <h3 class="text-lg font-medium text-gray-700">Your Requests</h3>
                         <p class="text-2xl font-bold text-gray-900">{{ $userStats['your_requests'] }}</p>
@@ -184,81 +181,6 @@
     </div>
 
     <div class="row">
-        <!-- Recent Services -->
-        {{-- <div class="col-12 col-xl-6 mb-4">
-            <div class="card border-0 shadow">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h2 class="fs-5 fw-bold mb-0">Recent Services</h2>
-                        </div>
-                        <div class="col text-end">
-                            <a href="{{ route('services') }}" class="btn btn-sm btn-primary">See all</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="border-bottom" scope="col">Name</th>
-                                <th class="border-bottom" scope="col">Description</th>
-                                <th class="border-bottom" scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($recentServices as $service)
-                            <tr>
-                                <td class="fw-bold">{{ $service->name }}</td>
-                                <td>{{ Str::limit($service->description, 30) }}</td>
-                                <td>${{ number_format($service->price, 2) }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> --}}
-
-        <!-- Recent Requests -->
-        {{-- <div class="col-12 col-xl-6 mb-4">
-            <div class="card border-0 shadow">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h2 class="fs-5 fw-bold mb-0">Recent Requests</h2>
-                        </div>
-                        <div class="col text-end">
-                            <a href="{{ route('requests.index') }}" class="btn btn-sm btn-primary">See all</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="border-bottom" scope="col">Service</th>
-                                <th class="border-bottom" scope="col">User</th>
-                                <th class="border-bottom" scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($recentRequests as $request)
-                            <tr>
-                                <td class="fw-bold">{{ $request->service->name }}</td>
-                                <td>{{ $request->user->name }}</td>
-                                <td>
-                                    <span class="badge bg-{{ $request->status === 'completed' ? 'success' : 'warning' }}">
-                                        {{ ucfirst($request->status) }}
-                                    </span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> --}}
 
 
     <!-- Recent Services and Requests -->

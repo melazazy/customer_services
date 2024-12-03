@@ -24,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('password_reset_tokens', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('password_reset_tokens');
     }
 };
