@@ -53,9 +53,13 @@
                         <div class="p-8 bg-white rounded-b-xl">
                             <h3 class="text-2xl font-bold mb-4 text-gray-800">{{ $service['title'] }}</h3>
                             <p class="text-gray-600 mb-6">{{ $service['description'] }}</p>
-                            <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                            <!-- <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
                                 Learn More
-                            </a>
+                            </a> -->
+                            <a href="{{ route('request.service', ['service_id' => $service['id']]) }}" 
+                                class="inline-block px-6 py-3 bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                                    Request Service
+                                </a>
                         </div>
                     </div>
                 @endforeach

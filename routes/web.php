@@ -10,7 +10,11 @@ use App\Livewire\Profile\Show;
 use App\Http\Livewire\Pages\ServiceRequest;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ManageRequests;
+use App\Livewire\ManageServices;
+use App\Livewire\ManageUsers;
 use App\Livewire\ServiceRequest as LivewireServiceRequest;
+use App\Livewire\ServiceCreate;
+
 
 
 Route::get('/', Home::class)->name('home');
@@ -22,7 +26,16 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard');
 
     Route::get('/manage-requests', ManageRequests::class)->name('manage.requests');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/manage-users', ManageUsers::class)->name('manage.users');
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/manage-services', ManageServices::class)->name('manage.services');
+    });
+
     Route::get('/request-service', LivewireServiceRequest::class)->name('request.service');
+    Route::get('/create-service', ServiceCreate::class)->name('create.service');
+
     // Profile Routes
     Route::get('/profile', Show::class)
         ->name('profile');

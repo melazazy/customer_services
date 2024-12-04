@@ -45,6 +45,7 @@ class Home extends Component
     {
         return Service::where('status', 'active')->get()->map(function ($service, $index) {
             return [
+                'id' => $service->id,
                 'icon' => $service->icon,
                 'title' => $service->name,
                 'description' => $service->description,
