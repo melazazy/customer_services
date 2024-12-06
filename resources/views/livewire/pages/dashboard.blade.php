@@ -6,34 +6,17 @@
             <p class="mb-0">Your creative services overview</p>
         </div>
     </div> --}}
-
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
+    <div class="container mx-auto px-2 py-2">
         @if (!Auth::user()->is_admin)
-            <a href="{{ route('request.service') }}" class="btn btn-primary btn-lg rounded-pill shadow">Request
-                Service</a>
+            <a href="{{ route('request.service') }}" class="btn btn-primary btn-lg rounded-pill shadow">Request Service</a>
         @endif
         @if (Auth::user()->is_admin)
             <!-- Admin Content -->
             <div class="admin-content">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Admin Overview</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <h3 class="text-lg font-medium text-gray-700">Total Services</h3>
-                        <p class="text-2xl font-bold text-gray-900">{{ $stats['total_services'] }}</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <h3 class="text-lg font-medium text-gray-700">Active Requests</h3>
-                        <p class="text-2xl font-bold text-gray-900">{{ $stats['active_requests'] }}</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <h3 class="text-lg font-medium text-gray-700">Total Users</h3>
-                        <p class="text-2xl font-bold text-gray-900">{{ $stats['total_users'] }}</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <h3 class="text-lg font-medium text-gray-700">Completed Requests</h3>
-                        <p class="text-2xl font-bold text-gray-900">{{ $stats['completed_requests'] }}</p>
-                    </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Service Requests Chart</h2>
+                    <canvas id="serviceRequestsChart" width="400" height="200"></canvas>
                 </div>
             </div>
         @else
@@ -41,11 +24,14 @@
             <div class="user-content">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Overview</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
                     <div class="bg-white p-4 rounded-lg shadow-md">
                         <h3 class="text-lg font-medium text-gray-700">Your Requests</h3>
                         <p class="text-2xl font-bold text-gray-900">{{ $userStats['your_requests'] }}</p>
                     </div>
+                </div>
+                <div class="mt-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Requests Chart</h2>
+                    <canvas id="userRequestsChart" width="400" height="200"></canvas>
                 </div>
             </div>
         @endif
@@ -234,3 +220,46 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Admin Service Requests Chart
+    var ctx = document.getElementById('serviceRequestsChart').getContext('2d');
+    var serviceRequestsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Services', 'Active Requests', 'Total Users', 'Completed Requests'],
+            datasets: [{
+                label: 'Statistics',
+                data: [
+                    {{ $stats['total_services'] }},
+                    {{ $stats['active_requests'] }},
+                    {{ $stats['total_users'] }},
+                    {{ $stats['completed_requests'] }}
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // User Requests Chart
+
+</script>

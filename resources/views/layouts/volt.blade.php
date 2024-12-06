@@ -16,7 +16,7 @@
     {{-- <link type="text/css" href="{{ asset('vendor/fullcalendar/main.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('vendor/dropzone/dist/min/dropzone.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('vendor/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet"> --}}
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @livewireStyles
 </head>
 

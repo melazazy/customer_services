@@ -9,10 +9,10 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-8">
-                <!-- <a href="#home" class="text-white hover:text-primary-red transition-colors">Home</a>
-                <a href="#services" class="text-white hover:text-primary-red transition-colors">Services</a>
-                <a href="#about" class="text-white hover:text-primary-red transition-colors">About</a>
-                <a href="#contact" class="text-white hover:text-primary-red transition-colors">Contact</a> -->
+                <a href="#home" class="text-white hover:text-primary-red transition-colors">{{ __('messages.home') }}</a>
+                <a href="#services" class="text-white hover:text-primary-red transition-colors">{{ __('messages.services') }}</a>
+                <a href="#about" class="text-white hover:text-primary-red transition-colors">{{ __('messages.about') }}</a>
+                <a href="#contact" class="text-white hover:text-primary-red transition-colors">{{ __('messages.contact') }}</a>
 
                 <!-- Auth Links -->
                 <div class="flex items-center space-x-4">
@@ -32,16 +32,16 @@
                                 @if (Auth::user()->is_admin)
                                     <a href="{{ route('dashboard') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Dashboard
+                                        {{ __('messages.dashboard') }}
                                     </a>
                                 @else
                                     <a href="{{ route('dashboard') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Dashboard
+                                        {{ __('messages.dashboard') }}
                                     </a>
                                     <a href="{{ route('profile') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Profile
+                                        {{ __('messages.profile') }}
                                     </a>
                                 @endif
 
@@ -50,17 +50,25 @@
                                     @csrf
                                     <button type="submit"
                                         class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Logout
+                                        {{ __('messages.logout') }}
                                     </button>
                                 </form>
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('login') }}" class="text-white hover:text-primary-red transition-colors">Login</a>
+                        <a href="{{ route('login') }}" class="text-white hover:text-primary-red transition-colors">{{ __('messages.login') }}</a>
                         <a href="{{ route('register') }}"
-                            class="text-white hover:text-primary-red transition-colors">Register</a>
+                            class="text-white hover:text-primary-red transition-colors">{{ __('messages.register') }}</a>
                     @endauth
                 </div>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center space-x-4">
+                <select onchange="window.location.href=this.value" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white">
+                    <option value="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                    <option value="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
+                </select>
             </div>
 
             <!-- Mobile Navigation Button -->
@@ -83,12 +91,12 @@
             x-transition:leave-start="opacity-100 transform translate-y-0"
             x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Home</a>
+                <a href="#home" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.home') }}</a>
                 <a href="#services"
-                    class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Services</a>
-                <a href="#about" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">About</a>
+                    class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.services') }}</a>
+                <a href="#about" class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.about') }}</a>
                 <a href="#contact"
-                    class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Contact</a>
+                    class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.contact') }}</a>
 
                 <!-- Mobile Auth Links -->
                 <div class="pt-4 border-t border-gray-700 space-y-2">
@@ -108,12 +116,12 @@
                                 @if (Auth::user()->is_admin)
                                     <a href="{{ route('dashboard') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Dashboard
+                                        {{ __('messages.dashboard') }}
                                     </a>
                                 @else
                                     <a href="{{ route('profile') }}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Profile
+                                        {{ __('messages.profile') }}
                                     </a>
                                 @endif
 
@@ -122,16 +130,16 @@
                                     @csrf
                                     <button type="submit"
                                         class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        Logout
+                                        {{ __('messages.logout') }}
                                     </button>
                                 </form>
                             </div>
                         </div>
                     @else
                         <a href="{{ route('login') }}"
-                            class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Login</a>
+                            class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.login') }}</a>
                         <a href="{{ route('register') }}"
-                            class="block bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors text-center mx-3">Register</a>
+                            class="block bg-primary-red text-white px-6 py-2 rounded-full hover:bg-secondary-red transition-colors text-center mx-3">{{ __('messages.register') }}</a>
                     @endauth
                 </div>
             </div>
