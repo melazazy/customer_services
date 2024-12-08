@@ -2,10 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Models\Notification;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Service;
 use App\Models\ServiceRequest as ServiceRequestModel;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -51,7 +53,7 @@ class ServiceRequest extends Component
 
         if ($this->documents) {
             $documents = is_array($this->documents) ? $this->documents : [$this->documents];
-            dd($documents);
+            // dd($documents);
             foreach ($this->documents as $document) {
                 try {
                     // Retrieve user details
@@ -118,6 +120,28 @@ class ServiceRequest extends Component
             // Save the service request
 
             $serviceRequest->save();
+
+            // Create a notification for the user
+        Notification::create([
+            'user_id' => Auth::id(),
+            'request_id' => $serviceRequest->id,
+            'title' => 'New Service Request',
+            'message' => "Your service request has been created successfully.",
+            'is_read' => false,
+            'created_at' => now()
+        ]);
+        // Notify admins about the new request
+        $adminUsers = User::where('is_admin', true)->get();
+        foreach ($adminUsers as $admin) {
+            Notification::create([
+                'user_id' => $admin->id,
+                'request_id' => $serviceRequest->id,
+                'title' => 'New Service Request',
+                'message' => "A new service request has been created by " . Auth::user()->name . ".",
+                'is_read' => false,
+                'created_at' => now()
+            ]);
+        }
 
             // Reset form fields
             $this->reset(['service_id', 'documents', 'notes']);

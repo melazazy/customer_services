@@ -1,4 +1,5 @@
 <div class="">
+    <a href="{{ route('users.management') }}" class="btn btn-primary btn-lg rounded-pill shadow">Add User</a>
     <div class="bg-light p-4 rounded">
         <h1 class="text-2xl font-bold mb-4 text-primary">Manage Users</h1>
         <div class="card border-0 shadow mb-4">
@@ -24,8 +25,10 @@
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                                         {{ $user->is_admin ? 'Admin' : 'User' }}</td>
                                     <td>
-                                        <button wire:click="edit({{ $user->id }})"
-                                            class="btn btn-sm btn-outline-primary">Edit</button>
+                                        <a href="{{ route('users.edit', ['id' => $user->id]) }}"
+                                            class="btn btn-sm btn-outline-primary">Edit
+                                        </a>
+
                                         <button wire:click="delete({{ $user->id }})"
                                             class="btn btn-sm btn-outline-danger">Delete</button>
                                     </td>

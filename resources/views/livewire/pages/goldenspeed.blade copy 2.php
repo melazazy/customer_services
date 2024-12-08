@@ -60,7 +60,7 @@
             <div class="container">
                 <div class="header__wrapper">
                     <div class="brand-logo animate" data-animation="fadeInUpShort" data-duration="1000">
-                        <a style="background-image: url({{ asset('assets/goldenspeed/logo.png') }});width: 150px;background-position: right;"
+                        <a style="background-image: url({{ asset('assets/goldenspeed/logo.png') }});" width: 150px;background-position: right;"
                             href="/">
                             <span class="sr-only">{{ __('messages.welcome') }}</span>
                         </a>
@@ -260,7 +260,8 @@
                             <ul class="services__list">
                                 {{-- @dd($services) --}}
                                 @foreach ($services as $service)
-                                <li class="services__item cursor-pointer" onclick="window.location.href='{{ route('services.show', $service['id']) }}'">
+                                <a href="{{ route('services.show', $service['id']) }}" class="text-primary-red hover:text-secondary-red">
+                                <li class="services__item">
                                     <div class="service__icon home__service animate" data-animation="fadeInUpShort"
                                         data-duration="300"></div>
                                     <h3 class="animate" data-animation="fadeInUpShort" data-duration="500">
@@ -270,6 +271,7 @@
                                         {{ $service['description'] }}
                                     </p>
                                 </li>
+                                </a>
                                 @endforeach
                             </ul>
                         </div>
@@ -333,7 +335,7 @@
         <footer class="s-footer">
             <div class="container">
                 <div class="footer__wrap">
-                    <p class="animate" data-animation="fadeInUpShort" data-duration="200"> 2024 {{ __('messages.all_rights_reserved') }}</p>
+                    <p class="animate" data-animation="fadeInUpShort" data-duration="200">© 2024 {{ __('messages.all_rights_reserved') }}</p>
                     <p class="animate" data-animation="fadeInUpShort" data-duration="200">
                         <a href="https://nanots.ae">
                             <img src="{{ asset('assets/goldenspeed/nts.ico') }}" alt="" style="width: 80px;">

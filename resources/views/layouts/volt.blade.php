@@ -68,7 +68,7 @@
                             <img src="{{ asset('assets/img/brand/light.svg') }}" height="20" width="20"
                                 alt="Logo">
                         </span>
-                        <span class="mt-1 ms-1 sidebar-text">Creative Services</span>
+                        <span class="mt-1 ms-1 sidebar-text">{{ config('app.name', 'Laravel') }}</span>
                     </a>
                 </li>
 
@@ -81,6 +81,17 @@
                             </svg>
                         </span>
                         <span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('notifications') ? 'active' : '' }}">
+                    <a href="{{ route('notifications') }}" class="nav-link">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">notifications</span>
                     </a>
                 </li>
 
@@ -125,7 +136,7 @@
                     </li>
                     </li>
                 @else
-                    <li class="nav-item {{ request()->routeIs('requests.index') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->routeIs('manage.requests') ? 'active' : '' }}">
                         <a href="{{ route('manage.requests') }}" class="nav-link">
                             <span class="sidebar-icon">
                                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
@@ -134,7 +145,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">My Requests</span>
+                            <span class="sidebar-text">Requests</span>
                         </a>
                     </li>
                 @endif

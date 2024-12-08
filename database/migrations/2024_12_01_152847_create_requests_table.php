@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['pending', 'in_progress', 'completed', 'expired'])->default('pending');
+            $table->enum('status', ['pending', 'in_progress', 'completed', 'canceled'])->default('pending');
             $table->text('notes')->nullable();
             $table->json('documents')->nullable();
             $table->decimal('price', 10, 2)->nullable();

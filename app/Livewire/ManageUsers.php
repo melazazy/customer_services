@@ -5,18 +5,38 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class ManageUsers extends Component
 {
     public $users;
     public $showModal = false; // Modal visibility
     public $editUser; // User being edited
+    public $name, $email, $password, $password_confirmation, $role; // Registration fields
 
     public function mount()
     {
         $this->users = User::all();
     }
+    public function register()
+{
+    $validatedData = $this->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email',
+        'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+        'role' => 'required|in:admin,user', // Add role validation
+    ]);
 
+    $validatedData['password'] = Hash::make($validatedData['password']);
+    $validatedData['is_admin'] = $validatedData['role'] === 'admin'; // Assuming you have an is_admin column
+
+    User::create($validatedData);
+
+    session()->flash('success', 'User registered successfully.');
+    $this->reset(); // Reset form fields
+    $this->users = User::all(); // Refresh user list
+}
     public function edit($userId)
     {
         $user = User::findOrFail($userId);

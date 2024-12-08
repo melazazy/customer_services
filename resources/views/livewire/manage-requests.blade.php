@@ -13,15 +13,12 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 @if (Auth::user()->is_admin)
-                                    <th class="border-0 rounded-start" style="width: 15%;">User</th>
+                                    <th class="border-0 rounded-start"">User</th>
                                 @endif
-                                <th class="border-0" style="width: 15%;">Service</th>
-                                <th class="border-0" style="width: 10%;">Status</th>
-                                <th class="border-0" style="width: 20%;">Notes</th>
-                                <th class="border-0" style="width: 20%;">Documents</th>
-                                <th class="border-0" style="width: 10%;">Price</th>
-                                <th class="border-0" style="width: 10%;">Expiry Date</th>
-                                <th class="border-0 rounded-end" style="width: 10%;">Actions</th>
+                                <th class="border-0"">Service</th>
+                                <th class="border-0"">Status</th>
+                                <th class="border-0"">Price</th>
+                                <th class="border-0 rounded-end"">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,30 +32,25 @@
                                         {{ $request->service->name }}</td>
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                                         {{ ucfirst($request->status) }}</td>
+
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        {{ $request->notes }}</td>
-                                    <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        @if (is_array($request->documents))
-                                            {{ implode(', ', $request->documents) }}
+                                        @if ($request->price == '0')
+                                            ###
                                         @else
-                                            No documents
+                                            {{ $request->price }}
                                         @endif
                                     </td>
-                                    <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        {{ $request->price }}</td>
-                                    <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        {{ $request->expiry_date->format('Y-m-d') }}</td>
                                     <td>
 
                                         @if (Auth::user()->is_admin)
-                                            <button class="btn btn-sm btn-success"
-                                                wire:click="edit({{ $request->id }})">Edit</button>
+                                            <a href="{{ route('request.update', ['id' => $request->id]) }}" class="btn btn-sm btn-success">
+                                                Show/Update </a>
                                             <button class="btn btn-sm btn-danger"
                                                 wire:click="delete({{ $request->id }})">Delete</button>
                                         @else
                                             {{-- <button class="btn btn-sm btn-warning" --}}
-                                            <button class="btn btn-sm" style="background-color: #ff6b5b"
-                                                wire:click="edit({{ $request->id }})">Show</button>
+                                            <a href="{{ route('requests.show', ['id' => $request->id]) }}" style="background-color: #ff6b5b " class="btn btn-sm btn-warning">View</a>
+
                                         @endif
                                     </td>
                                 </tr>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" >
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="home" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
@@ -28,15 +28,16 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <!-- Conditionally include RTL CSS for Arabic -->
-    @if (app()->getLocale() === 'ar')
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.rtl.min.css" rel="stylesheet">
-    @endif
     <!-- Scripts -->
     <!-- Goldenspeed Assets -->
     <link rel="stylesheet" href="{{ asset('css/goldenspeed.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @stack('styles')
+    @if (app()->getLocale() === 'ar')
+    {{-- @dd(app()->getLocale()) --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.rtl.min.css" rel="stylesheet">
+    @endif
 </head>
 <body style="font-size:13px;"">
     @hasSection('content')

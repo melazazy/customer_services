@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\ServiceRequest;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -39,16 +40,13 @@ class ManageRequests extends Component
 
     public function save()
     {
-        // Validate and save the changes
-        // $this->validate([
-        //     'editRequest.notes' => 'nullable|string|max:500',
-        //     'editRequest.price' => 'nullable|numeric',
-        //     'editRequest.expiry_date' => 'nullable|date',
-        // ]);
+        dd('Edit Request Data:', $this->editRequest);
+
         $rules = [
             'editRequest.price' => 'nullable|numeric',
             'editRequest.documents' => 'nullable|string|max:255',
         ];
+
         if (Auth::user()->is_admin) {
             $rules = array_merge($rules, [
                 'editRequest.notes' => 'nullable|string|max:500',
@@ -57,13 +55,85 @@ class ManageRequests extends Component
                 'editRequest.status' => 'required|in:active,inactive',
             ]);
         }
-        $this->validate($rules);
-        $this->editRequest->save();
-        $this->showModal = false; // Close the modal
-        session()->flash('success', 'Request updated successfully.');
-        $this->requests = ServiceRequest::with(['user', 'service'])->get(); // Refresh the list
-    }
 
+        $this->validate($rules);
+
+        try {
+            // Get the original request before changes
+            $originalRequest = ServiceRequest::find($this->editRequest['id']);
+            $statusChanged = $originalRequest->status !== $this->editRequest['status'];
+
+            // Save the request changes
+            $request = ServiceRequest::findOrFail($this->editRequest['id']);
+            $request->fill($this->editRequest);
+            $request->save();
+
+            // Create notifications
+            $this->createNotifications($request, $statusChanged, $originalRequest->status);
+
+            $this->showModal = false;
+            session()->flash('success', 'Request updated successfully.');
+            $this->requests = ServiceRequest::with(['user', 'service'])->get();
+
+        } catch (\Exception $e) {
+            Log::error('Request Update Error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            session()->flash('error', 'An error occurred while updating the request. Please try again.');
+        }
+    }
+    private function createNotifications($request, $statusChanged, $oldStatus)
+    {
+        // Create notification for the user
+        Notification::create([
+            'user_id' => $request->user_id,
+            'request_id' => $request->id,
+            'title' => 'Request Updated',
+            'message' => "Your service request has been updated.",
+            'is_read' => false,
+            'created_at' => now()
+        ]);
+
+        // If status changed, create a more specific notification
+        if ($statusChanged) {
+            Notification::create([
+                'user_id' => $request->user_id,
+                'request_id' => $request->id,
+                'title' => 'Request Status Changed',
+                'message' => "Your request status has changed from {$oldStatus} to {$request->status}.",
+                'is_read' => false,
+                'created_at' => now()
+            ]);
+        }
+
+        // If price was updated, create a price update notification
+        if ($request->wasChanged('price')) {
+            Notification::create([
+                'user_id' => $request->user_id,
+                'request_id' => $request->id,
+                'title' => 'Price Updated',
+                'message' => "The price for your request has been updated to $" . number_format($request->price, 2),
+                'is_read' => false,
+                'created_at' => now()
+            ]);
+        }
+
+        // Notify admins about new requests
+        if ($request->wasRecentlyCreated) {
+            $adminUsers = \App\Models\User::where('is_admin', true)->get();
+            foreach ($adminUsers as $admin) {
+                Notification::create([
+                    'user_id' => $admin->id,
+                    'request_id' => $request->id,
+                    'title' => 'New Service Request',
+                    'message' => "A new service request has been created by {$request->user->name}.",
+                    'is_read' => false,
+                    'created_at' => now()
+                ]);
+            }
+        }
+    }
     public function delete($requestId)
     {
         try {
