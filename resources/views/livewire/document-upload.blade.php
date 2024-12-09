@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="uploadDocument">
+    <form action="{{ route('document.upload', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="uploadDocument">
         <div class="space-y-4">
             <div>
                 <label for="document" class="block text-sm font-medium text-gray-700">{{ __('messages.upload_document') }}</label>

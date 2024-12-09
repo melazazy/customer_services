@@ -69,6 +69,7 @@ class ServiceManagement extends Component
     public function render()
     {
         $services = Service::all();
+
         return view('livewire.service-management', [
             'services' => $services
         ]);

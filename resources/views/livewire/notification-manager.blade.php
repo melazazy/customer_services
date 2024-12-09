@@ -8,10 +8,12 @@
                         style="table-layout: fixed; width: 100%;">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th class="border-0 rounded-start" style="width: 15%;">{{ __('messages.user_name') }}</th>
-                                <th class="border-0" style="width: 15%;">{{ __('messages.title') }}</th>
-                                <th class="border-0" style="width: 55%;">{{ __('messages.message') }}</th>
-                                <th class="border-0 rounded-end" style="width: 15%;">{{ __('messages.actions') }}</th>
+                                <th class="border-0 rounded-start" style="width: 15%;">{{ __('messages.user_name') }}
+                                </th>
+                                <th class="border-0" style="width: 15%;">{{ __('messages.table_title') }}</th>
+                                <th class="border-0" style="width: 55%;">{{ __('messages.table_message') }}</th>
+                                <th class="border-0 rounded-end" style="width: 15%;">{{ __('messages.table_actions') }}
+                                </th>
                             </tr>
                         </thead>
                         {{-- @dd($notification['request_id']) --}}
@@ -24,7 +26,8 @@
                                         {{-- </a> --}}
                                     </td>
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        <a class="text-info fw-bolder font-monospace" href="{{ route('requests.show', ['id' => $notification['request_id']]) }}">
+                                        <a class="text-info fw-bolder font-monospace"
+                                            href="{{ route('requests.show', ['id' => $notification['request_id']]) }}">
                                             {{ $notification['title'] }}
                                         </a>
                                     </td>
@@ -32,10 +35,35 @@
                                         {{ $notification['message'] }}
                                     </td>
                                     <td>
-                                        <button wire:click="show({{ $notification['id'] }})"
+                                        {{-- <button wire:click="show({{ $notification['id'] }})"
                                             class="btn btn-sm btn-outline-info">{{ __('messages.show') }}</button>
                                         <button wire:click="delete({{ $notification['id'] }})"
-                                            class="btn btn-sm btn-outline-danger">{{ __('messages.delete') }}</button>
+                                            class="btn btn-sm btn-outline-danger">{{ __('messages.delete') }}</button> --}}
+                                        {{-- <button
+                                            wire:click="show('{{ $notification['id'] }}', '{{ request()->segment(1) }}')"
+                                            class="btn btn-sm btn-outline-info">
+                                            {{ __('messages.show') }}
+                                        </button>
+                                        <button
+                                            wire:click="delete('{{ $notification['id'] }}', '{{ request()->segment(1) }}')"
+                                            class="btn btn-sm btn-outline-danger">
+                                            {{ __('messages.delete') }}
+                                        </button> --}}
+
+
+                                        <button wire:click="show('{{ $notification['id'] }}')" 	action="{{ route('notifications') }}"
+                                            class="btn btn-sm btn-outline-info">
+                                            {{ __('messages.show') }}
+                                        </button>
+
+                                        <button
+                                            wire:click="delete('{{ $notification['id'] }}')"
+                                            class="btn btn-sm btn-outline-danger">
+                                            {{ __('messages.delete') }}
+                                        </button>
+
+
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,17 +91,20 @@
                         <p><strong>{{ __('messages.title') }}:</strong> {{ $selectedNotification->title }}</p>
                         <p><strong>{{ __('messages.message') }}:</strong> {{ $selectedNotification->message }}</p>
                         <p><strong>{{ __('messages.request_page') }}:</strong>
-                            <a class="btn btn-primary" href="{{ route('requests.show', ['id' => $selectedNotification->request_id]) }}">
+                            <a class="btn btn-primary"
+                                href="{{ route('requests.show', ['id' => $selectedNotification->request_id]) }}">
                                 ID # {{ $selectedNotification->request_id }}
                             </a>
                         </p>
-                        <p><strong>{{ __('messages.created_at') }}:</strong> {{ $selectedNotification->created_at }}</p>
+                        <p><strong>{{ __('messages.created_at') }}:</strong> {{ $selectedNotification->created_at }}
+                        </p>
                     @else
                         <p>{{ __('messages.no_notification_details_available') }}</p>
                     @endif
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" wire:click="closeModal">{{ __('messages.close') }}</button>
+                    <button type="button" class="btn btn-secondary"
+                        wire:click="closeModal">{{ __('messages.close') }}</button>
                 </div>
             </div>
         </div>

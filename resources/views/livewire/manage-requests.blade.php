@@ -12,12 +12,12 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 @if (Auth::user()->is_admin)
-                                    <th class="border-0 rounded-start"">User</th>
+                                    <th class="border-0 rounded-start">{{ __('messages.user') }}</th>
                                 @endif
-                                <th class="border-0"">Service</th>
-                                <th class="border-0"">Status</th>
-                                <th class="border-0"">Price</th>
-                                <th class="border-0 rounded-end"">Actions</th>
+                                <th class="border-0">{{ __('messages.service') }}</th>
+                                <th class="border-0">{{ __('messages.status') }}</th>
+                                <th class="border-0">{{ __('messages.price') }}</th>
+                                <th class="border-0 rounded-end">{{ __('messages.table_actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,9 +43,11 @@
 
                                         @if (Auth::user()->is_admin)
                                             <a href="{{ route('request.update', ['id' => $request->id]) }}" class="btn btn-sm btn-success">
-                                                Show/Update </a>
+                                                {{ __('messages.edit') }}</a>
                                             <button class="btn btn-sm btn-danger"
-                                                wire:click="delete({{ $request->id }})">Delete</button>
+                                                wire:click="delete({{ $request->id }})">
+                                                {{ __('messages.delete') }}
+                                            </button>
                                         @else
                                             {{-- <button class="btn btn-sm btn-warning" --}}
                                             <a href="{{ route('requests.show', ['id' => $request->id]) }}" style="background-color: #ff6b5b " class="btn btn-sm btn-warning">View</a>
@@ -73,7 +75,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="save">
+                    <form action="{{ route('manage.requests', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="save">
                         @if (Auth::user()->is_admin)
                             <!-- Status -->
                             <div class="form-group">

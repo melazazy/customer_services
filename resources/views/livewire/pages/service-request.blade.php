@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <form wire:submit.prevent="submit" class="mt-4">
+            <form action="{{ route('request.service', ['locale' => app()->getLocale()]) }}"  wire:submit.prevent="submit" class="mt-4">
                 <!-- Service Selection -->
                 <div class="form-group mb-4">
                     <label for="service">Service Name</label>

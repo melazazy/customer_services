@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    <form wire:submit.prevent="createOrUpdateUser">
+                    <form action="{{ route('manage.users', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="createOrUpdateUser">
                         <div class="form-group mb-4">
                             <label for="name">{{ __('messages.name') }}</label>
                             <div class="input-group">

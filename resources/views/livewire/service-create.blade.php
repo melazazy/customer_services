@@ -17,7 +17,8 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <form wire:submit.prevent="save" class="mt-4">
+
+            <form action="{{ $serviceId ? route('services.edit', ['locale' => app()->getLocale(), 'id' => $serviceId]) : route('create.service', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="save" class="mt-4">
                 <!-- Service Name -->
                 <div class="form-group mb-4">
                     <label for="name" class="form-label">{{ __('messages.service_name') }} <span class="text-danger">*</span></label>
@@ -59,26 +60,6 @@
                     @enderror
                 </div>
 
-                <!-- Icon -->
-                {{-- <div class="form-group mb-4">
-                    <label for="icon" class="form-label">{{ __('messages.icon') }}</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="icon-addon">
-                            <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                            </svg>
-                        </span>
-                        <input id="icon" type="text" wire:model="icon"
-                            class="form-control @error('icon') is-invalid @enderror"
-                            placeholder="{{ __('messages.enter_icon_class_or_url') }}" aria-describedby="iconError" maxlength="255">
-                    </div>
-                    @error('icon')
-                        <div id="iconError" class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
                 <!-- Image File -->
                 <div class="form-group mb-4">
                     <label for="image" class="form-label">{{ __('messages.service_image') }} ({{ __('messages.optional') }})</label>
@@ -118,8 +99,7 @@
                             <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                                    clip-rule="evenodd" />
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                             </svg>
                         </span>
                         <select id="status" wire:model="status"

@@ -2,267 +2,333 @@
     <div class="container mx-auto px-2 py-2">
         @if (Auth::user()->is_admin)
             <!-- Admin Content -->
-            <div class="row">
-                {{-- total services --}}
-                <div class="col-12 col-sm-6 col-xl-4 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-primary rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Services</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_services'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">Services</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_services'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
+<div class="row">
+    {{-- total services --}}
+    <div class="col-12 col-sm-6 col-xl-4 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-primary rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.services') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_services'] }}</h3>
                         </div>
                     </div>
-                </div>
-                {{-- total user --}}
-                <div class="col-12 col-sm-6 col-xl-4 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Users</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_users'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">Users</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_users'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xl-4 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-success rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Requests</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_requests'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">Requests</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_requests'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.services') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_services'] }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-12 col-sm-6 col-xl-3 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-danger rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Pending Requests</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_pending_requests'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0"> <span><br></span>Pending Requests</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_pending_requests'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
+    {{-- total users --}}
+    <div class="col-12 col-sm-6 col-xl-4 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.users') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_users'] }}</h3>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-xl-3 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-info rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">In Progress Requests</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_in_progress_requests'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">In Progress Requests</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_in_progress_requests'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xl-3 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-info rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Completed Requests</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_completed_requests'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">Completed Requests</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_completed_requests'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xl-3 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <div class="row d-block d-xl-flex align-items-center">
-                                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                                    <div class="icon-shape icon-shape-warning rounded me-4 me-sm-0">
-                                        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="d-sm-none">
-                                        <h2 class="h5">Cancelled Requests</h2>
-                                        <h3 class="fw-extrabold mb-1">{{ $stats['total_cancelled_requests'] }}</h3>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-7 px-xl-0">
-                                    <div class="d-none d-sm-block">
-                                        <h2 class="h6 text-gray-400 mb-0">Cancelled Requests</h2>
-                                        <h3 class="fw-extrabold mb-2">{{ $stats['total_cancelled_requests'] }}</h3>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.users') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_users'] }}</h3>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="admin-content">
+        </div>
+    </div>
 
-                <div>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Monthly Requests Chart</h2>
-                    <canvas id="monthlyRequestsChart" width="400" height="200"></canvas>
+    {{-- total requests --}}
+    <div class="col-12 col-sm-6 col-xl-4 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-success rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.requests') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_requests'] }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.requests') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_requests'] }}</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            {{-- <div class="row">
-                <!-- Recent Services and Requests -->
-                <div class="recent-section">
-                    <div class="recent-services">
-                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Services</h2>
-                        <ul>
-                            @foreach ($recentServices as $service)
-                                <li>{{ $service->name }} - {{ $service->created_at->format('M d, Y') }}</li>
-                            @endforeach
-                        </ul>
+<div class="row">
+    <div class="col-12 col-sm-6 col-xl-3 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-danger rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.pending_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_pending_requests'] }}</h3>
+                        </div>
                     </div>
-                    <div class="recent-requests">
-                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Requests</h2>
-                        <ul>
-                            @foreach ($recentRequests as $request)
-                                <li>{{ $request->service->name }} by {{ $request->user->name }} -
-                                    {{ $request->created_at }}</li>
-                            @endforeach
-                        </ul>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.pending_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_pending_requests'] }}</h3>
+                        </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-info rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.in_progress_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_in_progress_requests'] }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.in_progress_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_in_progress_requests'] }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-info rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.completed_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_completed_requests'] }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.completed_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_completed_requests'] }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                        <div class="icon-shape icon-shape-warning rounded me-4 me-sm-0">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="d-sm-none">
+                            <h2 class="h5">{{ __('messages.cancelled_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-1">{{ $stats['total_cancelled_requests'] }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-7 px-xl-0">
+                        <div class="d-none d-sm-block">
+                            <h2 class="h6 text-gray-400 mb-0">{{ __('messages.cancelled_requests') }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $stats['total_cancelled_requests'] }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="admin-content">
+    <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __('messages.monthly_requests_chart') }}</h2>
+        <canvas id="monthlyRequestsChart" width="400" height="200"></canvas>
+    </div>
+</div>
 
-            <script>
-                // Monthly Requests Chart
-                var ctx = document.getElementById('monthlyRequestsChart').getContext('2d');
-                var monthlyRequestsChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                        datasets: [
-                            {
-                                label: 'Pending Requests',
-                                data: [{{ $stats['january_pending'] ?? 0 }}, {{ $chartData['february_pending'] ?? 0 }}, {{ $chartData['march_pending'] ?? 0 }}, {{ $chartData['april_pending'] ?? 0 }}, {{ $chartData['may_pending'] ?? 0 }}, {{ $chartData['june_pending'] ?? 0 }}, {{ $chartData['july_pending'] ?? 0 }}, {{ $chartData['august_pending'] ?? 0 }}, {{ $chartData['september_pending'] ?? 0 }}, {{ $chartData['october_pending'] ?? 0 }}, {{ $chartData['november_pending'] ?? 0 }}, {{ $chartData['december_pending'] ?? 0 }}],
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Cancelled Requests',
-                                data: [{{ $chartData['january_cancelled'] ?? 0 }}, {{ $chartData['february_cancelled'] ?? 0 }}, {{ $chartData['march_cancelled'] ?? 0 }}, {{ $chartData['april_cancelled'] ?? 0 }}, {{ $chartData['may_cancelled'] ?? 0 }}, {{ $chartData['june_cancelled'] ?? 0 }}, {{ $chartData['july_cancelled'] ?? 0 }}, {{ $chartData['august_cancelled'] ?? 0 }}, {{ $chartData['september_cancelled'] ?? 0 }}, {{ $chartData['october_cancelled'] ?? 0 }}, {{ $chartData['november_cancelled'] ?? 0 }}, {{ $chartData['december_cancelled'] ?? 0 }}],
-                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                                borderColor: 'rgba(54, 162, 235, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Completed Requests',
-                                data: [{{ $chartData['january_completed'] ?? 0 }}, {{ $chartData['february_completed'] ?? 0 }}, {{ $chartData['march_completed'] ?? 0 }}, {{ $chartData['april_completed'] ?? 0 }}, {{ $chartData['may_completed'] ?? 0 }}, {{ $chartData['june_completed'] ?? 0 }}, {{ $chartData['july_completed'] ?? 0 }}, {{ $chartData['august_completed'] ?? 0 }}, {{ $chartData['september_completed'] ?? 0 }}, {{ $chartData['october_completed'] ?? 0 }}, {{ $chartData['november_completed'] ?? 0 }}, {{ $chartData['december_completed'] ?? 0 }}],
-                                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                                borderColor: 'rgba(255, 206, 86, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'In Progress Requests',
-                                data: [{{ $chartData['january_in_progress'] ?? 0 }}, {{ $chartData['february_in_progress'] ?? 0 }}, {{ $chartData['march_in_progress'] ?? 0 }}, {{ $chartData['april_in_progress'] ?? 0 }}, {{ $chartData['may_in_progress'] ?? 0 }}, {{ $chartData['june_in_progress'] ?? 0 }}, {{ $chartData['july_in_progress'] ?? 0 }}, {{ $chartData['august_in_progress'] ?? 0 }}, {{ $chartData['september_in_progress'] ?? 0 }}, {{ $chartData['october_in_progress'] ?? 0 }}, {{ $chartData['november_in_progress'] ?? 0 }}, {{ $chartData['december_in_progress'] ?? 0 }}],
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
+<script>
+    // Monthly Requests Chart
+    var ctx = document.getElementById('monthlyRequestsChart').getContext('2d');
+    var monthlyRequestsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                '{{ __("messages.january") }}',
+                '{{ __("messages.february") }}',
+                '{{ __("messages.march") }}',
+                '{{ __("messages.april") }}',
+                '{{ __("messages.may") }}',
+                '{{ __("messages.june") }}',
+                '{{ __("messages.july") }}',
+                '{{ __("messages.august") }}',
+                '{{ __("messages.september") }}',
+                '{{ __("messages.october") }}',
+                '{{ __("messages.november") }}',
+                '{{ __("messages.december") }}'
+            ],
+            datasets: [{
+                label: '{{ __("messages.pending_requests") }}',
+                data: [
+                    {{ $chartData['january_pending'] ?? 0 }},
+                    {{ $chartData['february_pending'] ?? 0 }},
+                    {{ $chartData['march_pending'] ?? 0 }},
+                    {{ $chartData['april_pending'] ?? 0 }},
+                    {{ $chartData['may_pending'] ?? 0 }},
+                    {{ $chartData['june_pending'] ?? 0 }},
+                    {{ $chartData['july_pending'] ?? 0 }},
+                    {{ $chartData['august_pending'] ?? 0 }},
+                    {{ $chartData['september_pending'] ?? 0 }},
+                    {{ $chartData['october_pending'] ?? 0 }},
+                    {{ $chartData['november_pending'] ?? 0 }},
+                    {{ $chartData['december_pending'] ?? 0 }}
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '{{ __("messages.cancelled_requests") }}',
+                data: [
+                    {{ $chartData['january_cancelled'] ?? 0 }},
+                    {{ $chartData['february_cancelled'] ?? 0 }},
+                    {{ $chartData['march_cancelled'] ?? 0 }},
+                    {{ $chartData['april_cancelled'] ?? 0 }},
+                    {{ $chartData['may_cancelled'] ?? 0 }},
+                    {{ $chartData['june_cancelled'] ?? 0 }},
+                    {{ $chartData['july_cancelled'] ?? 0 }},
+                    {{ $chartData['august_cancelled'] ?? 0 }},
+                    {{ $chartData['september_cancelled'] ?? 0 }},
+                    {{ $chartData['october_cancelled'] ?? 0 }},
+                    {{ $chartData['november_cancelled'] ?? 0 }},
+                    {{ $chartData['december_cancelled'] ?? 0 }}
+                ],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '{{ __("messages.completed_requests") }}',
+                data: [
+                    {{ $chartData['january_completed'] ?? 0 }},
+                    {{ $chartData['february_completed'] ?? 0 }},
+                    {{ $chartData['march_completed'] ?? 0 }},
+                    {{ $chartData['april_completed'] ?? 0 }},
+                    {{ $chartData['may_completed'] ?? 0 }},
+                    {{ $chartData['june_completed'] ?? 0 }},
+                    {{ $chartData['july_completed'] ?? 0 }},
+                    {{ $chartData['august_completed'] ?? 0 }},
+                    {{ $chartData['september_completed'] ?? 0 }},
+                    {{ $chartData['october_completed'] ?? 0 }},
+                    {{ $chartData['november_completed'] ?? 0 }},
+                    {{ $chartData['december_completed'] ?? 0 }}
+                ],
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '{{ __("messages.in_progress_requests") }}',
+                data: [
+                    {{ $chartData['january_in_progress'] ?? 0 }},
+                    {{ $chartData['february_in_progress'] ?? 0 }},
+                    {{ $chartData['march_in_progress'] ?? 0 }},
+                    {{ $chartData['april_in_progress'] ?? 0 }},
+                    {{ $chartData['may_in_progress'] ?? 0 }},
+                    {{ $chartData['june_in_progress'] ?? 0 }},
+                    {{ $chartData['july_in_progress'] ?? 0 }},
+                    {{ $chartData['august_in_progress'] ?? 0 }},
+                    {{ $chartData['september_in_progress'] ?? 0 }},
+                    {{ $chartData['october_in_progress'] ?? 0 }},
+                    {{ $chartData['november_in_progress'] ?? 0 }},
+                    {{ $chartData['december_in_progress'] ?? 0 }}
+                ],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '{{ __("messages.requests_count") }}'
                     }
-                });
-            </script>
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: '{{ __("messages.title") }}'
+                }
+            }
+        }
+    });
+</script>
         @else
             <a href="{{ route('request.service') }}" class="btn btn-primary btn-lg rounded-pill shadow">Request
                 Service</a>

@@ -4,7 +4,7 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
             <a href="{{ route('home') }}" class="text-2xl font-bold text-white">
-                Creative<span class="text-primary-red">Services</span>
+                Creative<span class="text-primary-red">{{ __('messages.services') }}</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -20,7 +20,7 @@
                         <div class="relative" x-data="{ open: false }">
                             <button @click="open = !open"
                                 class="flex items-center text-white hover:text-primary-red transition-colors">
-                                {{ Auth::user()->name }}
+                                {{ __('messages.hello') }} {{ Auth::user()->name }}
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 9l-7 7-7-7"></path>
@@ -66,14 +66,14 @@
             <!-- Language Switcher -->
             <div class="flex items-center space-x-4">
                 <select onchange="window.location.href=this.value" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white">
-                    <option value="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
-                    <option value="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
+                    <option value="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>{{ __('messages.english') }}</option>
+                    <option value="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>{{ __('messages.arabic') }}</option>
                 </select>
             </div>
 
             <!-- Mobile Navigation Button -->
             <button @click="isOpen = !isOpen" class="md:hidden focus:outline-none text-white"
-                aria-label="Toggle navigation">
+                aria-label="{{ __('messages.toggle_navigation') }}">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 6h16M4 12h16M4 18h16" />
@@ -104,7 +104,7 @@
                         <div class="relative" x-data="{ open: false }">
                             <button @click="open = !open"
                                 class="flex items-center text-white hover:text-primary-red transition-colors w-full">
-                                {{ Auth::user()->name }}
+                                {{ __('messages.hello') }} {{ Auth::user()->name }}
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 9l-7 7-7-7"></path>

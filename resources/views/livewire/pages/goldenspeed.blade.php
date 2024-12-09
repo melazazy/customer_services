@@ -260,7 +260,7 @@
                             <ul class="services__list">
                                 {{-- @dd($services) --}}
                                 @foreach ($services as $service)
-                                <li class="services__item cursor-pointer" onclick="window.location.href='{{ route('services.show', $service['id']) }}'">
+                                <li class="services__item cursor-pointer" onclick="window.location.href='{{ route('services.show', ['locale' => app()->getLocale(), 'service' => $service['id']]) }}'">
                                     <div class="service__icon home__service animate" data-animation="fadeInUpShort"
                                         data-duration="300"></div>
                                     <h3 class="animate" data-animation="fadeInUpShort" data-duration="500">

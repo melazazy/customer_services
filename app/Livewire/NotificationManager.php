@@ -58,8 +58,9 @@ class NotificationManager extends Component
             $this->loadNotifications(); // Refresh notifications
         }
     }
-    public function delete($notificationId)
+    public function delete($notificationId, $locale)
 {
+    app()->setLocale($locale);
     $notification = Notification::find($notificationId);
     if ($notification) {
         $notification->delete();
@@ -69,8 +70,9 @@ class NotificationManager extends Component
         session()->flash('error', 'Notification not found.');
     }
 }
-public function show($notificationId)
+public function show($notificationId, $locale)
 {
+    app()->setLocale($locale);
     $notification = Notification::with(['user', 'service'])->find($notificationId);
     if ($notification) {
         // dd($notification);

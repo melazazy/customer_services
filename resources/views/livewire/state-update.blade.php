@@ -79,12 +79,12 @@
                 <!-- Update Request Form -->
                 <div class="card card-body border-0 shadow">
                     <h3 class="h5 mb-4">{{ __('messages.update_request') }}</h3>
-                    <form action="{{ route('request.update', app()->getLocale()) }}" method="POST" wire:submit.prevent="updateRequest" class="space-y-4">
+                    <form action="{{ route('request.update', ['locale' => app()->getLocale(), 'id' => $request->id]) }}" method="POST" wire:submit.prevent="updateRequest" class="space-y-4">
+                        @csrf
                         <!-- Status Update -->
                         <div>
                             <label for="status" class="block text-sm font-medium text-gray-700 mb-1">{{ __('messages.status') }}</label>
-                            <select wire:model.live="status"
-                                class="form-control w-full p-2 border border-gray-300 rounded">
+                            <select wire:model.live="status" class="form-control w-full p-2 border border-gray-300 rounded">
                                 <option value="pending">{{ __('messages.pending') }}</option>
                                 <option value="active">{{ __('messages.active') }}</option>
                                 <option value="in_progress">{{ __('messages.in_progress') }}</option>
@@ -99,9 +99,7 @@
                         <!-- Price Update -->
                         <div>
                             <label for="price" class="block text-sm font-medium text-gray-700 mb-1">{{ __('messages.price') }} $: </label>
-                            <input type="number" wire:model.live="price" id="price" step="0.01" min="0"
-                                class="form-control w-full p-2 pl-7 border border-gray-300 rounded"
-                                placeholder="{{ __('messages.enter_price') }}">
+                            <input type="number" wire:model.live="price" id="price" step="0.01" min="0" class="form-control w-full p-2 pl-7 border border-gray-300 rounded" placeholder="{{ __('messages.enter_price') }}">
                             @error('price')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
@@ -155,5 +153,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

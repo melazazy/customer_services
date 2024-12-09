@@ -11,7 +11,7 @@
                             <tr>
                                 <th class="border-0 rounded-start" style="width: 40%;">{{ __('messages.name') }}</th>
                                 <th class="border-0" style="width: 40%;">{{ __('messages.description') }}</th>
-                                <th class="border-0 rounded-end" style="width: 20%;">{{ __('messages.actions') }}</th>
+                                <th class="border-0 rounded-end" style="width: 20%;">{{ __('messages.table_actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,7 +47,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="save">
+                    <form action="{{ route('manage.services', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="save">
                         <div class="form-group">
                             <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" id="name" class="form-control"

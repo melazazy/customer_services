@@ -12,7 +12,7 @@
                     <div class="text-center text-md-center mb-4 mt-md-0">
                         <h1 class="mb-0 h3">{{ __('messages.create_account') }}</h1>
                     </div>
-                    <form wire:submit.prevent="register">
+                    <form action="{{ route('umanage.users', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="register">
                         <div class="mb-3">
                             <label for="name" class="form-label">{{ __('messages.name') }}</label>
                             <input type="text" class="form-control" id="name" wire:model="name" required>

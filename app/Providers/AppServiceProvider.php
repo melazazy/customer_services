@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\LanguageSwitcher;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Livewire::setUpdateUrl(url(LaravelLocalization::setLocale() . '/livewire/update'));
+        // Livewire::component('language-switcher', LanguageSwitcher::class);
+
+
     }
 }

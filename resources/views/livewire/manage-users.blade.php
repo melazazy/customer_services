@@ -51,7 +51,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="save">
+                    <form action="{{ route('manage.users', ['locale' => app()->getLocale()]) }}" wire:submit.prevent="save">
                         <div class="form-group">
                             <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" id="name" class="form-control" wire:model.defer="editUser.name">
