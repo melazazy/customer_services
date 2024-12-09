@@ -214,7 +214,7 @@
                     <div class="flex justify-between">
                         <a href="{{ route('dashboard') }}" class="btn btn-primary">
                             <i class="fas fa-arrow-left"></i>
-                            Back to Dashboard
+                            {{ __('messages.dashboard') }}
                         </a>
 
                         @if(Auth::user()->is_admin)

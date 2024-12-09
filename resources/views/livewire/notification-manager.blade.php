@@ -1,6 +1,6 @@
 <div class="">
     <div class="bg-light p-4 rounded">
-        <h1 class="text-2xl font-bold mb-4 text-primary">Notifications</h1>
+        <h1 class="text-2xl font-bold mb-4 text-primary">{{ __('messages.notifications') }}</h1>
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
@@ -8,10 +8,10 @@
                         style="table-layout: fixed; width: 100%;">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th class="border-0 rounded-start" style="width: 15%;">User Name</th>
-                                <th class="border-0" style="width: 15%;">title</th>
-                                <th class="border-0" style="width: 55%;">message</th>
-                                <th class="border-0 rounded-end" style="width: 15%;">Actions</th>
+                                <th class="border-0 rounded-start" style="width: 15%;">{{ __('messages.user_name') }}</th>
+                                <th class="border-0" style="width: 15%;">{{ __('messages.title') }}</th>
+                                <th class="border-0" style="width: 55%;">{{ __('messages.message') }}</th>
+                                <th class="border-0 rounded-end" style="width: 15%;">{{ __('messages.actions') }}</th>
                             </tr>
                         </thead>
                         {{-- @dd($notification['request_id']) --}}
@@ -33,9 +33,9 @@
                                     </td>
                                     <td>
                                         <button wire:click="show({{ $notification['id'] }})"
-                                            class="btn btn-sm btn-outline-info">Show</button>
+                                            class="btn btn-sm btn-outline-info">{{ __('messages.show') }}</button>
                                         <button wire:click="delete({{ $notification['id'] }})"
-                                            class="btn btn-sm btn-outline-danger">Delete</button>
+                                            class="btn btn-sm btn-outline-danger">{{ __('messages.delete') }}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -53,27 +53,27 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Notification Details</h5>
+                    <h5 class="modal-title">{{ __('messages.notification_details') }}</h5>
                     <button type="button" class="close" wire:click="closeModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     @if ($selectedNotification)
-                        <p><strong>Title:</strong> {{ $selectedNotification->title }}</p>
-                        <p><strong>Message:</strong> {{ $selectedNotification->message }}</p>
-                        <p><strong>Request Page:</strong>
+                        <p><strong>{{ __('messages.title') }}:</strong> {{ $selectedNotification->title }}</p>
+                        <p><strong>{{ __('messages.message') }}:</strong> {{ $selectedNotification->message }}</p>
+                        <p><strong>{{ __('messages.request_page') }}:</strong>
                             <a class="btn btn-primary" href="{{ route('requests.show', ['id' => $selectedNotification->request_id]) }}">
                                 ID # {{ $selectedNotification->request_id }}
                             </a>
                         </p>
-                        <p><strong>Created At:</strong> {{ $selectedNotification->created_at }}</p>
+                        <p><strong>{{ __('messages.created_at') }}:</strong> {{ $selectedNotification->created_at }}</p>
                     @else
-                        <p>No notification details available.</p>
+                        <p>{{ __('messages.no_notification_details_available') }}</p>
                     @endif
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" wire:click="closeModal">Close</button>
+                    <button type="button" class="btn btn-secondary" wire:click="closeModal">{{ __('messages.close') }}</button>
                 </div>
             </div>
         </div>

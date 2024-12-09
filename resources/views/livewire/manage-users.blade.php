@@ -1,7 +1,7 @@
 <div class="">
-    <a href="{{ route('users.management') }}" class="btn btn-primary btn-lg rounded-pill shadow">Add User</a>
+    <a href="{{ route('users.management') }}" class="btn btn-primary btn-lg rounded-pill shadow">{{ __('messages.add_user') }}</a>
     <div class="bg-light p-4 rounded">
-        <h1 class="text-2xl font-bold mb-4 text-primary">Manage Users</h1>
+        <h1 class="text-2xl font-bold mb-4 text-primary">{{ __('messages.manage_users') }}</h1>
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
@@ -9,10 +9,10 @@
                         style="table-layout: fixed; width: 100%;">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th class="border-0 rounded-start" style="width: 25%;">Name</th>
-                                <th class="border-0" style="width: 25%;">Email</th>
-                                <th class="border-0" style="width: 25%;">Role</th>
-                                <th class="border-0 rounded-end" style="width: 25%;">Actions</th>
+                                <th class="border-0 rounded-start" style="width: 25%;">{{ __('messages.name') }}</th>
+                                <th class="border-0" style="width: 25%;">{{ __('messages.email') }}</th>
+                                <th class="border-0" style="width: 25%;">{{ __('messages.role') }}</th>
+                                <th class="border-0 rounded-end" style="width: 25%;">{{ __('messages.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,14 +23,13 @@
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                                         {{ $user->email }}</td>
                                     <td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        {{ $user->is_admin ? 'Admin' : 'User' }}</td>
+                                        {{ $user->is_admin ? __('messages.admin') : __('messages.user') }}</td>
                                     <td>
                                         <a href="{{ route('users.edit', ['id' => $user->id]) }}"
-                                            class="btn btn-sm btn-outline-primary">Edit
-                                        </a>
+                                            class="btn btn-sm btn-outline-primary">{{ __('messages.edit') }}</a>
 
                                         <button wire:click="delete({{ $user->id }})"
-                                            class="btn btn-sm btn-outline-danger">Delete</button>
+                                            class="btn btn-sm btn-outline-danger">{{ __('messages.delete') }}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -46,7 +45,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit User</h5>
+                    <h5 class="modal-title">{{ __('messages.edit_user') }}</h5>
                     <button type="button" class="close" wire:click="$set('showModal', false)">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -54,14 +53,14 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="save">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" id="name" class="form-control" wire:model.defer="editUser.name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">{{ __('messages.email') }}</label>
                             <input type="email" id="email" class="form-control" wire:model.defer="editUser.email">
                         </div>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
                     </form>
                 </div>
             </div>

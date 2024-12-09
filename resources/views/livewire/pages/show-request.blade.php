@@ -216,12 +216,12 @@
                                     @if (Auth::user()->is_admin)
                                         <a href="{{ route('dashboard') }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Dashboard
+                                            {{ __('messages.dashboard') }}
                                         </a>
                                     @else
                                         <a href="{{ route('dashboard') }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Dashboard
+                                            {{ __('messages.dashboard') }}
                                         </a>
                                         <a href="{{ route('profile') }}"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">

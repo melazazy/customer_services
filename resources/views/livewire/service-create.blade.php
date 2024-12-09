@@ -2,7 +2,7 @@
     <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="p-6">
             <h1 class="text-2xl font-bold mb-3 text-center text-gray-800">
-                {{ $serviceId ? 'Edit Service' : 'Create Service' }}
+                {{ $serviceId ? __('messages.edit_service') : __('messages.create_service') }}
             </h1>
 
             @if (session()->has('success'))
@@ -20,7 +20,7 @@
             <form wire:submit.prevent="save" class="mt-4">
                 <!-- Service Name -->
                 <div class="form-group mb-4">
-                    <label for="name" class="form-label">Service Name <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">{{ __('messages.service_name') }} <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <span class="input-group-text" id="name-addon">
                             <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -31,8 +31,7 @@
                             </svg>
                         </span>
                         <input id="name" type="text" wire:model="name"
-                            class="form-control @error('name') is-invalid @enderror" placeholder="Enter service name"
-                            required aria-describedby="nameError" maxlength="255">
+                            class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('messages.enter_service_name') }}" required aria-describedby="nameError" maxlength="255">
                     </div>
                     @error('name')
                         <div id="nameError" class="invalid-feedback">{{ $message }}</div>
@@ -41,7 +40,7 @@
 
                 <!-- Description -->
                 <div class="form-group mb-4">
-                    <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+                    <label for="description" class="form-label">{{ __('messages.description') }} <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <span class="input-group-text" id="description-addon">
                             <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -52,7 +51,7 @@
                             </svg>
                         </span>
                         <textarea id="description" wire:model="description" class="form-control @error('description') is-invalid @enderror"
-                            rows="4" placeholder="Service description (Required)" required aria-describedby="descriptionError"
+                            rows="4" placeholder="{{ __('messages.service_description') }}" required aria-describedby="descriptionError"
                             maxlength="1000"></textarea>
                     </div>
                     @error('description')
@@ -62,7 +61,7 @@
 
                 <!-- Icon -->
                 {{-- <div class="form-group mb-4">
-                    <label for="icon" class="form-label">Icon</label>
+                    <label for="icon" class="form-label">{{ __('messages.icon') }}</label>
                     <div class="input-group">
                         <span class="input-group-text" id="icon-addon">
                             <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -73,7 +72,7 @@
                         </span>
                         <input id="icon" type="text" wire:model="icon"
                             class="form-control @error('icon') is-invalid @enderror"
-                            placeholder="Enter icon class or URL" aria-describedby="iconError" maxlength="255">
+                            placeholder="{{ __('messages.enter_icon_class_or_url') }}" aria-describedby="iconError" maxlength="255">
                     </div>
                     @error('icon')
                         <div id="iconError" class="invalid-feedback">{{ $message }}</div>
@@ -82,7 +81,7 @@
 
                 <!-- Image File -->
                 <div class="form-group mb-4">
-                    <label for="image" class="form-label">Service Image (Optional)</label>
+                    <label for="image" class="form-label">{{ __('messages.service_image') }} ({{ __('messages.optional') }})</label>
                     <input
                         type="file"
                         id="image"
@@ -98,7 +97,7 @@
                     <div class="mt-2">
                         <img
                             src="{{ Storage::url('services/images/' . $existingImage) }}"
-                            alt="Existing Service Image"
+                            alt="{{ __('messages.existing_service_image') }}"
                             class="img-thumbnail"
                             style="max-width: 200px;"
                         >
@@ -113,7 +112,7 @@
 
                 <!-- Status -->
                 <div class="form-group mb-4">
-                    <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                    <label for="status" class="form-label">{{ __('messages.status') }} <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <span class="input-group-text" id="status-addon">
                             <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -126,9 +125,9 @@
                         <select id="status" wire:model="status"
                             class="form-control @error('status') is-invalid @enderror" required
                             aria-describedby="statusError">
-                            <option value="">Select Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="">{{ __('messages.select_status') }}</option>
+                            <option value="active">{{ __('messages.active') }}</option>
+                            <option value="inactive">{{ __('messages.inactive') }}</option>
                         </select>
                     </div>
                     @error('status')
@@ -139,16 +138,16 @@
                 <!-- Submit Button -->
                 <div class="d-grid">
                     {{-- <button type="submit" class="btn btn-primary">
-                        {{ $serviceId ? 'Update Service' : 'Create Service' }}
+                        {{ $serviceId ? __('messages.update_service') : __('messages.create_service') }}
                     </button> --}}
                     <button type="submit" wire:loading.attr="disabled" class="btn btn-primary"
                         :disabled="!isFormValid">
                         <span wire:loading.remove>
-                            {{ $serviceId ? 'Update Service' : 'Create Service' }}
+                            {{ $serviceId ? __('messages.update_service') : __('messages.create_service') }}
                         </span>
                         <span wire:loading>
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Processing...
+                            {{ __('messages.processing') }}
                         </span>
                     </button>
                 </div>

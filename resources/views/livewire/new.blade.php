@@ -22,23 +22,23 @@
             @if (auth()->user()->is_admin)
                 <!-- Update Request Form -->
                 <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
-                    <h3 class="text-lg font-semibold mb-4">Update Request</h3>
+                    <h3 class="text-lg font-semibold mb-4">{{ __('messages.update_request') }}</h3>
                     <form wire:submit.prevent="updateRequest" class="space-y-4">
                         <!-- Status Update -->
                         <div>
-                            <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                            <label for="status" class="block text-sm font-medium text-gray-700 mb-1">{{ __('messages.status') }}</label>
                             <select wire:model.live="status" class="form-control">
-                                <option value="pending">Pending</option>
-                                <option value="active">Active</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="completed">Completed</option>
-                                <option value="cancelled">Cancelled</option>
+                                <option value="pending">{{ __('messages.pending') }}</option>
+                                <option value="active">{{ __('messages.active') }}</option>
+                                <option value="in_progress">{{ __('messages.in_progress') }}</option>
+                                <option value="completed">{{ __('messages.completed') }}</option>
+                                <option value="cancelled">{{ __('messages.cancelled') }}</option>
                             </select>
                         </div>
 
                         <!-- Price Update -->
                         <div>
-                            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Price</label>
+                            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">{{ __('messages.price') }}</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <span class="text-gray-500 sm:text-sm">$</span>
@@ -49,7 +49,7 @@
                                        step="0.01"
                                        min="0"
                                        class="form-control pl-7"
-                                       placeholder="Enter price">
+                                       placeholder="{{ __('messages.enter_price') }}">
                             </div>
                         </div>
 
@@ -59,11 +59,11 @@
                                 wire:loading.attr="disabled"
                                 wire:target="updateRequest">
                             <span wire:loading.remove wire:target="updateRequest">
-                                Update Request
+                                {{ __('messages.update_request') }}
                             </span>
                             <span wire:loading wire:target="updateRequest">
                                 <i class="fas fa-spinner fa-spin mr-1"></i>
-                                Updating...
+                                {{ __('messages.updating') }}
                             </span>
                         </button>
                     </form>
@@ -71,7 +71,7 @@
 
                 <!-- Document Upload Form -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-4">Price Offer Documents</h3>
+                    <h3 class="text-xl font-semibold mb-4">{{ __('messages.price_offer_documents') }}</h3>
                     <form wire:submit.prevent="uploadPriceOffer" class="space-y-4">
                         <div>
                             <input type="file"
@@ -88,11 +88,11 @@
                                 wire:target="uploadPriceOffer">
                             <span wire:loading.remove wire:target="uploadPriceOffer">
                                 <i class="fas fa-upload mr-1"></i>
-                                Upload Document
+                                {{ __('messages.upload_document') }}
                             </span>
                             <span wire:loading wire:target="uploadPriceOffer">
                                 <i class="fas fa-spinner fa-spin mr-1"></i>
-                                Uploading...
+                                {{ __('messages.uploading') }}
                             </span>
                         </button>
                     </form>

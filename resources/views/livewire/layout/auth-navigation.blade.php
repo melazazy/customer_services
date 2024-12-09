@@ -29,7 +29,7 @@
                             {{-- @if (Auth::user()->is_admin) --}}
                             <a href="{{ route('dashboard') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                Dashboard
+                                {{ __('messages.dashboard') }}
                             </a>
                             {{-- @else --}}
                             {{-- <a href="{{ route('profile') }}"
@@ -72,7 +72,7 @@
                 @auth
                     @if (Auth::user()->is_admin)
                         <a href="{{ route('dashboard') }}"
-                            class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Dashboard</a>
+                            class="block px-3 py-2 text-white hover:text-primary-red transition-colors">{{ __('messages.dashboard') }}</a>
                         <a href="{{ route('services.manage') }}"
                             class="block px-3 py-2 text-white hover:text-primary-red transition-colors">Manage Services</a>
                     @endif

@@ -1,8 +1,7 @@
 <div class="">
-    <a href="{{ route('create.service') }}" class="btn btn-primary btn-lg rounded-pill shadow">Create
-        Service</a>
+    <a href="{{ route('create.service') }}" class="btn btn-primary btn-lg rounded-pill shadow">{{ __('messages.create_service') }}</a>
     <div class="bg-light p-4 rounded">
-        <h1 class="text-2xl font-bold mb-4 text-primary">Manage Services</h1>
+        <h1 class="text-2xl font-bold mb-4 text-primary">{{ __('messages.manage_services') }}</h1>
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
@@ -10,9 +9,9 @@
                         style="table-layout: fixed; width: 100%;">
                         <thead class="bg-primary text-white">
                             <tr>
-                                <th class="border-0 rounded-start" style="width: 40%;">Name</th>
-                                <th class="border-0" style="width: 40%;">Description</th>
-                                <th class="border-0 rounded-end" style="width: 20%;">Actions</th>
+                                <th class="border-0 rounded-start" style="width: 40%;">{{ __('messages.name') }}</th>
+                                <th class="border-0" style="width: 40%;">{{ __('messages.description') }}</th>
+                                <th class="border-0 rounded-end" style="width: 20%;">{{ __('messages.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,11 +23,9 @@
                                         {{ $service->description }}</td>
                                     <td>
                                         <a href="{{ route('services.edit', $service->id) }}"
-                                            class="btn btn-sm btn-outline-primary">Edit
-
-                                        </a>
+                                            class="btn btn-sm btn-outline-primary">{{ __('messages.edit') }}</a>
                                         <button wire:click="delete({{ $service->id }})"
-                                            class="btn btn-sm btn-outline-danger">Delete</button>
+                                            class="btn btn-sm btn-outline-danger">{{ __('messages.delete') }}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -44,7 +41,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Service</h5>
+                    <h5 class="modal-title">{{ __('messages.edit_service') }}</h5>
                     <button type="button" class="close" wire:click="$set('showModal', false)">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -52,15 +49,15 @@
                 <div class="modal-body">
                     <form wire:submit.prevent="save">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">{{ __('messages.name') }}</label>
                             <input type="text" id="name" class="form-control"
                                 wire:model.defer="editService.name">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">{{ __('messages.description') }}</label>
                             <textarea id="description" class="form-control" wire:model.defer="editService.description"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
                     </form>
                 </div>
             </div>

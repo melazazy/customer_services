@@ -2,7 +2,7 @@
     <form wire:submit.prevent="uploadDocument">
         <div class="space-y-4">
             <div>
-                <label for="document" class="block text-sm font-medium text-gray-700">Upload Document</label>
+                <label for="document" class="block text-sm font-medium text-gray-700">{{ __('messages.upload_document') }}</label>
                 <input type="file" id="document" wire:model="document" 
                        class="mt-1 block w-full text-sm text-gray-500
                               file:mr-4 file:py-2 file:px-4
@@ -14,9 +14,7 @@
             </div>
 
             <button type="submit" 
-                    class="w-full bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">
-                Upload Document
-            </button>
+                    class="w-full bg-gradient-to-r from-primary-red to-secondary-red text-white font-semibold px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">{{ __('messages.upload_document') }}</button>
         </div>
     </form>
 </div>

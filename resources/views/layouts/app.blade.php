@@ -35,11 +35,10 @@
 
     @stack('styles')
     @if (app()->getLocale() === 'ar')
-    {{-- @dd(app()->getLocale()) --}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.rtl.min.css" rel="stylesheet">
     @endif
 </head>
-<body style="font-size:13px;"">
+<body style="font-size:13px;">
     @hasSection('content')
         @yield('content')
     @else
@@ -51,6 +50,12 @@
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
+                        <ul class="lang-switcher animate" data-animation="fadeInUpShort" data-duration="1900">
+                            <select onchange="window.location.href=this.value" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white">
+                                <option value="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                                <option value="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
+                            </select>
+                        </ul>
                     </div>
                 </header>
             @endif

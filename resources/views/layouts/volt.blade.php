@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('messages.title') }}</title>
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('css/volt.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
 <body>
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="{{ route('home') }}">
-            <img class="navbar-brand-dark" src="{{ asset('assets/img/brand/light.svg') }}" alt="Logo" />
+            <img class="navbar-brand-dark" src="{{ asset('assets/img/brand/light.svg') }}" alt="{{ __('messages.title') }}" />
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -44,7 +44,7 @@
                             class="card-img-top rounded-circle border-white" alt="User Photo">
                     </div>
                     <div class="d-block">
-                        <h2 class="h5 mb-3">Hi, {{ Auth::user()->name }}</h2>
+                        <h2 class="h5 mb-3">{{ __('messages.hello') }}, {{ Auth::user()->name }}</h2>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
@@ -54,7 +54,7 @@
                                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                                     </path>
                                 </svg>
-                                Sign Out
+                                {{ __('messages.logout') }}
                             </button>
                         </form>
                     </div>
@@ -68,7 +68,7 @@
                             <img src="{{ asset('assets/img/brand/light.svg') }}" height="20" width="20"
                                 alt="Logo">
                         </span>
-                        <span class="mt-1 ms-1 sidebar-text">{{ config('app.name', 'Laravel') }}</span>
+                        <span class="mt-1 ms-1 sidebar-text">{{ __('messages.home') }}</span>
                     </a>
                 </li>
 
@@ -80,7 +80,7 @@
                                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                             </svg>
                         </span>
-                        <span class="sidebar-text">Dashboard</span>
+                        <span class="sidebar-text">{{ __('messages.dashboard') }}</span>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('notifications') ? 'active' : '' }}">
@@ -91,7 +91,7 @@
                                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                             </svg>
                         </span>
-                        <span class="sidebar-text">notifications</span>
+                        <span class="sidebar-text">{{ __('messages.notifications') }}</span>
                     </a>
                 </li>
 
@@ -105,7 +105,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">Manage Users</span>
+                            <span class="sidebar-text">{{ __('messages.manage_users') }}</span>
                         </a>
                     </li>
                     <li class="nav-item {{ request()->routeIs('services.*') ? 'active' : '' }}">
@@ -117,11 +117,9 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">Manage Services</span>
+                            <span class="sidebar-text">{{ __('messages.manage_services') }}</span>
                         </a>
                     </li>
-
-
                     <li class="nav-item {{ request()->routeIs('requests.*') ? 'active' : '' }}">
                         <a href="{{ route('manage.requests') }}" class="nav-link">
                             <span class="sidebar-icon">
@@ -131,9 +129,8 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">Manage Requests</span>
+                            <span class="sidebar-text">{{ __('messages.manage_requests') }}</span>
                         </a>
-                    </li>
                     </li>
                 @else
                     <li class="nav-item {{ request()->routeIs('manage.requests') ? 'active' : '' }}">
@@ -145,7 +142,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">Requests</span>
+                            <span class="sidebar-text">{{ __('messages.requests') }}</span>
                         </a>
                     </li>
                 @endif
@@ -165,7 +162,7 @@
                                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                                     </svg>
                                 </span>
-                                <input type="text" class="form-control" id="topbarInput" placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
+                                <input type="text" class="form-control" id="topbarInput" placeholder="{{ __('messages.search') }}" aria-label="Search" aria-describedby="topbar-addon">
                             </div>
                         </form> --}}
                     </div>
@@ -191,7 +188,7 @@
                                             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Profile
+                                    {{ __('messages.profile') }}
                                 </a>
                                 <div role="separator" class="dropdown-divider my-1"></div>
                                 <form method="POST" action="{{ route('logout') }}">
@@ -203,10 +200,18 @@
                                                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                                             </path>
                                         </svg>
-                                        Logout
+                                        {{ __('messages.logout') }}
                                     </button>
                                 </form>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <ul class="lang-switcher animate" data-animation="fadeInUpShort" data-duration="1900">
+                                <select onchange="window.location.href=this.value" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white">
+                                    <option value="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>{{ __('messages.english') }}</option>
+                                    <option value="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>{{ __('messages.arabic') }}</option>
+                                </select>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -221,7 +226,7 @@
             <div class="row">
                 <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
                     <p class="mb-0 text-center text-lg-start"> {{ date('Y') }}
-                        <a class="text-primary fw-normal" href="{{ route('home') }}">Creative Services</a>
+                        <a class="text-primary fw-normal" href="{{ route('home') }}">{{ __('messages.creative_services') }}</a>
                     </p>
                 </div>
             </div>
